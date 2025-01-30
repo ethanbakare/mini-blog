@@ -9,13 +9,19 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@sanity/icons": "^3.5.7",
+    "@sanity/image-url": "^1.1.0",
+    "@sanity/vision": "^3.72.1",
+    "next": "15.1.6",
+    "next-sanity": "^9.8.46",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "next": "15.1.6"
+    "sanity": "^3.72.1",
+    "styled-components": "^6.1.14"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3",
     "eslint": "^9",
-    "eslint-config-next": "15.1.6",
-    "@eslint/eslintrc": "^3"
+    "eslint-config-next": "15.1.6"
   }
 }

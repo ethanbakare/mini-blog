@@ -1,0 +1,91 @@
+/* src/styles/homepage.css */
+
+/* Intro Section */
+.intro-text {
+    margin-bottom: 60px;
+    background-color: #1e1e1e;
+    padding: 20px 12px;
+    border-radius: 12px;
+}
+
+.intro-text p {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.7;
+    margin-bottom: 10px;
+}
+
+/* Essay List Styles */
+.essay-wrapper-link {
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+    color: inherit;  /* Added to prevent link color */
+}
+
+.essay-wrapper {
+    margin-bottom: 10px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: var(--max-content-width);
+    margin-left: auto;
+    margin-right: auto;
+    gap: 10px;
+    padding: 24px 12px;
+    transition: background-color 0.2s ease;
+}
+
+.essay-wrapper:hover {
+    background-color: var(--card-background);
+}
+
+.essay-header {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    gap: 8px;
+    flex-shrink: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.home-title {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-color-light);
+    margin: 0;
+    padding: 0;
+}
+
+.home-description {
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--text-color);
+}
+
+.home-date {
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--text-color);
+    text-align: right;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.home-line {
+    flex-grow: 1;
+    min-width: 20px;
+    height: 0.5px;
+    background-color: var(--text-color);
+    opacity: 45%;
+    align-self: center;
+    margin: 0;
+}
+
+@media (max-width: 560px) {
+    .home-description {
+        display: none;
+    }
+}

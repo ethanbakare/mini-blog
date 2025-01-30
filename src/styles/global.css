@@ -1,0 +1,104 @@
+/* src/styles/global.css */
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Remove Next.js default styles */
+html,
+body {
+    padding: 0;
+    margin: 0;
+    background: #161616;
+}
+
+main {
+    display: contents;
+}
+
+:root {
+    --max-content-width: 560px;
+    --background-color: #161616;
+    --text-color: #a0a0a0;
+    --text-color-light: #ffffff;
+    --accent-color: #89774F;
+    --card-background: #1e1e1e;
+    --frosted-background: rgba(22, 22, 22, 0.5);
+}
+
+/* Base Styles */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    overflow-y: auto;
+    text-align: left;
+    padding: 20px;
+    padding-bottom: 100px;
+}
+
+::selection {
+    background-color: var(--accent-color);
+    color: var(--text-color-light);
+}
+
+.logo {
+    margin-top: 100px;
+            margin-bottom: 60px;
+    color: inherit;
+    width: 32px;
+    height: 32px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('/m-favicon.svg');
+}
+
+.logo-container {
+    width: 32px;
+    height: 32px;
+    display: block;
+    margin-bottom: 2rem;
+}
+
+/* Layout Components */
+.content {
+    max-width: var(--max-content-width);
+    width: 100%;
+    text-align: left;
+}
+
+/* Footer Component */
+.frosted-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    background-color: var(--frosted-background);
+    pointer-events: none;
+    z-index: 999;
+    mask-image: linear-gradient(to top, rgba(22, 22, 22, 1) 50%, rgba(22, 22, 22, 0) 100%);
+    -webkit-mask-image: linear-gradient(to top, rgba(22, 22, 22, 1) 50%, rgba(22, 22, 22, 0) 100%);
+}
+
+@media (max-width: 768px) {
+    .logo {
+        margin-top: 20px;
+    }
+}
