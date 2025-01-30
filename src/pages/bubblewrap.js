@@ -9,7 +9,6 @@ export default function Essay() {
                 <title>Bubblewrap</title>
             </Head>
             <div className="content">
-                <img src="/api/placeholder/32/32" alt="Logo" className="logo" />
                 <h1 className="article-title">Bubblewrap</h1>
                 <p className="article-content">Right now, you're wondering why this post is called Bubblewrap. Good. That curiosity, that raised eyebrow – that's exactly what we're going to explore.</p>
                 <p className="article-content">You know that satisfying feeling when you pop bubble wrap? That moment of connection between your action and the result. That's what we're all looking for online. A connection. A response. A pop.</p>
