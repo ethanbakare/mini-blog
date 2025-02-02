@@ -2,7 +2,7 @@
 
 .article-title {
     font-size: 1rem;
-    font-weight: 400;
+    font-weight: 500;
     margin-bottom: 20px;
     color: var(--text-color-light);
     text-align: left;
@@ -12,7 +12,7 @@
     max-width: 100%;
     line-height: 1.7;
     font-size: 0.95rem;
-    font-weight: 300;
+    font-weight: 400;
     text-align: left;
     margin-bottom: 20px;
 }
@@ -28,12 +28,13 @@
 
 /* Navigation Styles */
 .navigation {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
     margin-top: 40px;
     max-width: var(--max-content-width);
     width: 100%;
+    min-height: 50px;
 }
 
 .nav-link {
@@ -41,18 +42,125 @@
     flex-direction: column;
     font-size: 0.85rem;
     color: var(--text-color);
-    text-align: left;
-    font-weight: 300;
+    font-weight: 400;
     text-decoration: none;
     gap: 8px;
+}
+
+/* Prev link and its title */
+.nav-prev {
+    text-align: left;
+    grid-column: 1;
+}
+
+.nav-prev span {
+    text-align: left;
+}
+
+/* Next link and its title */
+.nav-next {
+    text-align: right;
+    grid-column: 2;
+}
+
+.nav-next span {
+    text-align: right;
 }
 
 .nav-link span {
     font-size: 0.85rem;
     color: var(--text-color-light);
-    font-weight: 300;
+    font-weight: 400;
 }
 
 .nav-link:hover {
     text-decoration: none;
+}
+
+/* Navigation title styles */
+.nav-link .nav-title {
+    display: block;
+}
+
+/* Only truncate below 560px */
+/* Mobile Styles */
+@media (max-width: 560px) {
+    .nav-link .nav-title {
+        max-width: 120px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .navigation {
+        gap: 10px;  /* Reduce gap on mobile */
+    }
+
+    /* Ensure alignment is maintained on mobile */
+    .nav-prev, 
+    .nav-prev span {
+        text-align: left;
+    }
+
+    .nav-next, 
+    .nav-next span {
+        text-align: right;
+        /* display: block;  Ensures full width */
+        align-items: flex-end;  /* Aligns content to the right */
+    }
+
+    .nav-link .nav-title {
+        max-width: 120px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* Keep right alignment for truncated next titles */
+    .nav-next .nav-title {
+        margin-left: auto;  /* Pushes truncated text to the right */
+    }
+}
+
+/* Adjust max-width for different screen sizes */
+@media (max-width: 480px) {
+    .nav-link .nav-title {
+        max-width: 100px;
+    }
+
+    .navigation {
+        gap: 10px;  /* Reduce gap on mobile */
+    }
+
+    /* Ensure alignment is maintained on mobile */
+    .nav-prev, 
+    .nav-prev span {
+        text-align: left;
+    }
+
+    .nav-next, 
+    .nav-next span {
+        text-align: right;
+    }
+}
+
+@media (max-width: 360px) {
+    .nav-link .nav-title {
+        max-width: 80px;
+    }
+
+    .navigation {
+        gap: 10px;  /* Reduce gap on mobile */
+    }
+
+    /* Ensure alignment is maintained on mobile */
+    .nav-prev, 
+    .nav-prev span {
+        text-align: left;
+    }
+
+    .nav-next, 
+    .nav-next span {
+        text-align: right;
+    }
 }

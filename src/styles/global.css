@@ -39,16 +39,19 @@ body {
     font-family: 'Inter', sans-serif;
     margin: 0;
     padding: 0;
-    display: flex;
+    display: block;
+    /* display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
+    align-items: center; */
+    width: 100%;  /* Ensure body takes full viewport width */
+    /* justify-content: flex-start; */
     min-height: 100vh;
     overflow-y: auto;
     text-align: left;
     padding: 20px;
     padding-bottom: 100px;
 }
+
 
 ::selection {
     background-color: var(--accent-color);
@@ -57,7 +60,7 @@ body {
 
 .logo {
     margin-top: 100px;
-            margin-bottom: 60px;
+    margin-bottom: 60px;
     color: inherit;
     width: 32px;
     height: 32px;
@@ -67,19 +70,55 @@ body {
     background-image: url('/m-favicon.svg');
 }
 
+
+/* Add this to global.css */
+.logo-wrapper {
+    max-width: var(--max-content-width);
+    width: var(--max-content-width);
+    margin: 0 auto;
+    /* Match content container behavior */
+}
+
+
+
 .logo-container {
     width: 32px;
     height: 32px;
     display: block;
-    margin-bottom: 2rem;
+    margin-bottom: 60px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+    /* align-self: flex-start; */
 }
 
 /* Layout Components */
 .content {
     max-width: var(--max-content-width);
-    width: 100%;
+    width: var(--max-content-width);
+    margin: 0 auto;
     text-align: left;
 }
+
+.logo-container:hover {
+    opacity: 0.8;
+}
+
+
+/* Footer text styles
+.footer-text {
+    position: fixed;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8rem;
+    color: #a0a0a0;
+    z-index: 990;
+    width: var(--max-content-width);
+    text-align: center;
+} */
+
+
 
 /* Footer Component */
 .frosted-footer {
@@ -92,13 +131,42 @@ body {
     -webkit-backdrop-filter: blur(6px);
     background-color: var(--frosted-background);
     pointer-events: none;
-    z-index: 999;
+    z-index: 980;
     mask-image: linear-gradient(to top, rgba(22, 22, 22, 1) 50%, rgba(22, 22, 22, 0) 100%);
     -webkit-mask-image: linear-gradient(to top, rgba(22, 22, 22, 1) 50%, rgba(22, 22, 22, 0) 100%);
 }
 
 @media (max-width: 768px) {
+
+    
     .logo {
         margin-top: 20px;
+    }
+}
+
+
+
+@media (max-width: 599px) {
+
+    body {
+        align-items: flex-start;
+    }
+
+    .content {
+        max-width: 100%;
+        width: 100%;
+    }
+}
+/* @media (max-width: 600px) {
+    .footer-text {
+        width: 100%;
+        padding: 0 20px;
+    }
+} */
+
+
+@media (max-width: 599px) {
+    .logo-wrapper {
+        width: 100%;
     }
 }

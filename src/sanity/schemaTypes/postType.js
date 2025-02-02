@@ -1,65 +1,55 @@
-import {DocumentTextIcon} from '@sanity/icons'
-import {defineArrayMember, defineField, defineType} from 'sanity'
+import {defineField, defineType} from 'sanity'
 
-export const postType = defineType({
+const postType = defineType({
   name: 'post',
   title: 'Post',
   type: 'document',
-  icon: DocumentTextIcon,
   fields: [
     defineField({
       name: 'title',
+      title: 'Title',
+      type: 'string',
+      validation: Rule => Rule.required()
+    }),
+    defineField({
+      name: 'description',
+      title: 'Description',
       type: 'string',
     }),
     defineField({
       name: 'slug',
+      title: 'Slug',
       type: 'slug',
       options: {
         source: 'title',
+        maxLength: 96,
       },
+      validation: Rule => Rule.required()
     }),
     defineField({
-      name: 'author',
-      type: 'reference',
-      to: {type: 'author'},
-    }),
-    defineField({
-      name: 'mainImage',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
-      fields: [
-        defineField({
-          name: 'alt',
-          type: 'string',
-          title: 'Alternative text',
-        })
-      ]
-    }),
-    defineField({
-      name: 'categories',
+      name: 'content',
+      title: 'Content',
       type: 'array',
-      of: [defineArrayMember({type: 'reference', to: {type: 'category'}})],
+      of: [{type: 'block'}]
     }),
     defineField({
       name: 'publishedAt',
+      title: 'Published at',
       type: 'datetime',
     }),
     defineField({
-      name: 'body',
-      type: 'blockContent',
+      name: 'prevEssay',
+      title: 'Previous Essay',
+      type: 'reference',
+      to: [{type: 'post'}],
+    }),
+    defineField({
+      name: 'nextEssay',
+      title: 'Next Essay',
+      type: 'reference',
+      to: [{type: 'post'}],
     }),
   ],
-  preview: {
-    select: {
-      title: 'title',
-      author: 'author.name',
-      media: 'mainImage',
-    },
-    prepare(selection) {
-      const {author} = selection
-      return {...selection, subtitle: author && `by ${author}`}
-    },
-  },
 })
+
+export default postType
