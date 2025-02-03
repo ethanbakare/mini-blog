@@ -17,12 +17,28 @@ export default function Essay() {
 
     useEffect(() => {
         const fetchEssay = async () => {
-            if (!slug) return  // Don't fetch if slug isn't available yet
+            if (!slug) return
             const data = await client.fetch(getEssayBySlug, { slug })
             setEssay(data)
+            // Reset scroll position when new essay loads
+            window.scrollTo(0, 0)
         }
         fetchEssay()
     }, [slug])  // Re-fetch when slug changes
+
+    // Also add this effect to handle route changes
+    useEffect(() => {
+        // Handle route change complete
+        const handleRouteChange = () => {
+            window.scrollTo(0, 0)
+        }
+
+        router.events.on('routeChangeComplete', handleRouteChange)
+
+        return () => {
+            router.events.off('routeChangeComplete', handleRouteChange)
+        }
+    }, [router.events])
 
     if (!essay) return (
         <Layout>
@@ -45,6 +61,10 @@ export default function Essay() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.5 }}
+                onAnimationComplete={() => {
+                    // Ensure scroll reset after animation
+                    window.scrollTo(0, 0)
+                }}
             >
                 <motion.h1 
                     className="article-title"
@@ -83,6 +103,10 @@ export default function Essay() {
                             href={`/${essay.prevEssay.slug}`} 
                             className="nav-link nav-prev"
                             scroll={false}
+                            onClick={() => {
+                                // Force scroll to top on navigation click
+                                window.scrollTo(0, 0)
+                            }}
                         >
                             Prev<br />
                             <span className="nav-title">{essay.prevEssay.title}</span>
@@ -93,6 +117,10 @@ export default function Essay() {
                             href={`/${essay.nextEssay.slug}`} 
                             className="nav-link nav-next"
                             scroll={false}
+                            onClick={() => {
+                                // Force scroll to top on navigation click
+                                window.scrollTo(0, 0)
+                            }}
                         >
                             Next<br />
                             <span className="nav-title">{essay.nextEssay.title}</span>
